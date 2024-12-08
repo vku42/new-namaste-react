@@ -22,7 +22,9 @@
   "homepage": "https://github.com/vku42/new-namaste-react#readme",
   "devDependencies": {
     "parcel": "^2.13.2",
-    "process": "^0.11.10"
+    "postcss": "^8.4.49",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.4.16"
   },
   "dependencies": {
     "@swc/helpers": "^0.5.15",

@@ -14,19 +14,29 @@ const Details = () => {
   const conversionRate = 84; // Define a constant for the conversion rate
 
   return (
-    <div className="menu">
-      <div className="details-r">
-        <img src={item.image_url} alt={item.name} />
-      </div>
-      <div>
-        <h1>{item.name}</h1>
-        <h2>Ingredients</h2>
-        <ul className="Ingre">
-          {item.ingredients.split(",").map((ing) => (
-            <li key={ing.trim()}>{ing.trim()}</li>
-          ))}
-        </ul>
-        <h3>{item.price * conversionRate} Rs</h3>
+    <div className="h-[82vh] flex  justify-center items-center bg-stone-900 ">
+      <div className="bg-stone-600 p-3 rounded-lg">
+        <div className="">
+          <img
+            className="h-[200px] w-[200px] object-cover rounded-lg"
+            src={item.image_url}
+            alt={item.name}
+          />
+        </div>
+        <div className="pt-2">
+          <h1 className="font-bold text-lg">{item.name}</h1>
+          <h2 className="font-semibold">Ingredients</h2>
+          <ul className="Ingre">
+            {item.ingredients.split(",").map((ing) => (
+              <li className=" ml-3" key={ing.trim()}>
+                ⚫{ing.trim()}
+              </li>
+            ))}
+          </ul>
+          <h3 className="font-medium text-2xl text-right">
+            {item.price * conversionRate} Rs
+          </h3>
+        </div>
       </div>
     </div>
   );

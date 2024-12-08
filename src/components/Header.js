@@ -7,22 +7,22 @@ function Header() {
 
   useEffect(() => {}, []);
   return (
-    <div className="header">
+    <div className="flex p-4 justify-between bg-stone-950 text-yellow-50 text-sm  px-14 sm:text-2xl">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
+        <img className="w-[170px]" src={LOGO_URL} />
       </div>
       <div className="nav-items">
-        <ul>
-          <li>
+        <ul className="flex gap-5 p-4 h-[100%] items-center font-normal">
+          <li className="hover:text-sky-700 ">
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/about">About Us</Link>
+          <li className="hover:text-sky-700">
+            <Link to="/about">About</Link>
           </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
+          <li className="hover:text-sky-700">
+            <Link to="/contact">Contact</Link>
           </li>
-          <li>
+          <li className="hover:text-sky-700">
             <a>Cart</a>
           </li>
           <button

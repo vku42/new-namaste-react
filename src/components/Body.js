@@ -37,13 +37,13 @@ function Body() {
   return data.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter">
+    <div className="bg-stone-900 min-h-[90vh] pb-10">
+      <div className="pt-4">
         <button
           onClick={() => {
             setData(gobalData.filter((res) => res.rating > 4));
           }}
-          className="filter-btn"
+          className="px-3 py-1 mb-2  border border-solid border-blue-900 text-blue-100 rounded-full bg-slate-800 mx-2"
           type="button"
         >
           Top Rated Items
@@ -52,7 +52,7 @@ function Body() {
           onClick={() => {
             setData(gobalData);
           }}
-          className="filter-btn"
+          className="px-3 py-1 mb-2  border border-solid border-blue-900 text-blue-100 rounded-full bg-slate-800 mx-2"
           type="button"
         >
           All Items
@@ -61,7 +61,7 @@ function Body() {
           onClick={() => {
             setData(gobalData.filter((res) => res.is_veg === true));
           }}
-          className="filter-btn"
+          className="px-3 py-1 mb-2  border border-solid border-blue-900 text-blue-100 rounded-full bg-slate-800 mx-2"
           type="button"
         >
           Only Veg Item
@@ -70,7 +70,7 @@ function Body() {
           onClick={() => {
             setData(gobalData.filter((res) => res.is_veg === false));
           }}
-          className="filter-btn"
+          className="px-3 py-1 mb-2  border border-solid border-blue-900 text-blue-100 rounded-full bg-slate-800 mx-2"
           type="button"
         >
           Only Non Veg Item
@@ -80,16 +80,16 @@ function Body() {
             const sortedData = [...data].sort((a, b) => a.price - b.price);
             setData(sortedData);
           }}
-          className="filter-btn"
+          className="px-3 py-1 mb-2 border border-solid border-blue-900 text-blue-100 rounded-full bg-slate-800 mx-2"
           type="button"
         >
           Sort by Price (Low to High)
         </button>
       </div>
-      <div className="search">
+      <div className="my-4 px-4  flex justify-center">
         <input
           type="text"
-          className="search_box"
+          className="border border-solid border-black px-2 py-2 rounded-md bg-slate-800 text-yellow-50"
           placeholder="Search for Items"
           value={searchText}
           onChange={(e) => {
@@ -105,7 +105,7 @@ function Body() {
         />
 
         <button
-          className="search-btn"
+          className="px-8 py-2 bg-blue-950 text-white ml-2 rounded-md"
           onClick={() => {
             const filterItem = gobalData.filter((item) =>
               item.name.toUpperCase().includes(searchText)
@@ -116,7 +116,7 @@ function Body() {
           Search
         </button>
       </div>
-      <div className="res-container">
+      <div className="flex gap-2 flex-wrap justify-center">
         {data.map((res, index) => (
           <Link to={`/item/${res.id}`}>
             <Card key={res.id} resData={res} />

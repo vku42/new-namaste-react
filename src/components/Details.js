@@ -1,30 +1,32 @@
-import { useState, useEffect } from "react";
-import Shimmer from "./Shimmer";
 import { useParams } from "react-router";
 import useItemMenu from "../utils/useItemMenu";
+import Shimmer from "./Shimmer";
 
 const Details = () => {
-  // const [item, setItem] = useState(null);
   const { id } = useParams();
-
   const menuItem = useItemMenu(id);
 
-  return menuItem === null ? (
-    <Shimmer />
-  ) : (
+  if (!menuItem || menuItem.length === 0) {
+    return <Shimmer />;
+  }
+
+  const item = menuItem[0];
+  const conversionRate = 84; // Define a constant for the conversion rate
+
+  return (
     <div className="menu">
       <div className="details-r">
-        <img src={menuItem[0].image_url} />
+        <img src={item.image_url} alt={item.name} />
       </div>
       <div>
-        <h1>{menuItem[0].name}</h1>
+        <h1>{item.name}</h1>
         <h2>Ingredients</h2>
         <ul className="Ingre">
-          {menuItem[0].ingredients.split(",").map((ing) => {
-            return <li key={ing}>{ing}</li>;
-          })}
+          {item.ingredients.split(",").map((ing) => (
+            <li key={ing.trim()}>{ing.trim()}</li>
+          ))}
         </ul>
-        <h3>{menuItem[0].price * 84} Rs</h3>
+        <h3>{item.price * conversionRate} Rs</h3>
       </div>
     </div>
   );

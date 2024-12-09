@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card, { WithVegLabel } from "./Card";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -8,6 +8,8 @@ let gobalData = [];
 function Body() {
   const [data, setData] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  const CardVeg = WithVegLabel(Card);
 
   useEffect(() => {
     fetchData();
@@ -119,7 +121,11 @@ function Body() {
       <div className="flex gap-2 flex-wrap justify-center">
         {data.map((res, index) => (
           <Link to={`/item/${res.id}`}>
-            <Card key={res.id} resData={res} />
+            {res.is_veg === true ? (
+              <CardVeg key={res.id} resData={res} />
+            ) : (
+              <Card key={res.id} resData={res} />
+            )}
           </Link>
         ))}
       </div>
